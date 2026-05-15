@@ -245,11 +245,13 @@
         <div class="hq-val">4</div>
         <div class="hq-lbl">Courses TA'd</div>
       </div>
+      <div class="hq-item">
+        <div class="hq-val" id="citation-count">—</div>
+        <div class="hq-lbl">Citations</div>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- RESEARCH -->
 <section id="research">
   <div class="container">
     <span class="sec-label">Publications</span>
@@ -443,5 +445,31 @@
   </div>
 </footer>
 
+<script>
+  const PAPERS = [
+    "arXiv:2603.15481",
+    "10.1007/978-981-16-0586-4_35",
+    "10.1109/WIECE.2018.8783017"
+  ];
+
+  async function fetchCitations() {
+    const el = document.getElementById("citation-count");
+    try {
+      let total = 0;
+      await Promise.all(PAPERS.map(async (pid) => {
+        const url = "https://api.semanticscholar.org/graph/v1/paper/" + encodeURIComponent(pid) + "?fields=citationCount";
+        const res = await fetch(url);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (typeof data.citationCount === "number") total += data.citationCount;
+      }));
+      el.textContent = total;
+    } catch(e) {
+      el.textContent = "—";
+    }
+  }
+
+  fetchCitations();
+</script>
 </body>
 </html>
