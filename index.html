@@ -154,6 +154,16 @@
     .pub-title a:hover { text-decoration-color: var(--text); }
     .pub-authors { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
     .pub-authors strong { color: var(--text); font-weight: 500; }
+    .pub-sublabel {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-top: 0.75rem;
+    }
+    .pub-alt-link { font-size: 0.82rem; margin-top: 0.4rem; }
+    .pub-alt-link a {
+      color: var(--muted); text-decoration: underline;
+      text-underline-offset: 3px; text-decoration-color: var(--border);
+    }
+    .pub-alt-link a:hover { color: var(--text); }
     .featured-badge {
       display: inline-flex; align-items: center;
       font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em;
@@ -273,7 +283,7 @@
     <div class="hero-photo" aria-label="Portrait of Shovon Niverd Pereira">
       <img src="pp.jpg" alt="Portrait of Shovon Niverd Pereira" />
     </div>
-    <div class="hero-eyebrow">PhD Candidate · UT Arlington · Arlington, TX</div>
+    <div class="hero-eyebrow">PhD Candidate · UT Arlington · Expected Spring 2027 · Arlington, TX</div>
     <h1>Shovon Niverd<br/>Pereira</h1>
     <p class="hero-bio">
       I'm a computer science PhD student researching <strong>knowledge distillation</strong> and tabular machine learning, advised by <a href="https://sercatuta-lei.github.io/" target="_blank">Dr. Yu Lei</a>. My work on <a href="https://arxiv.org/pdf/2603.15481" target="_blank">TabKD</a> was accepted at IJCAI 2026. Before my PhD, I was a Senior Software Engineer at Samsung R&D, building the Samsung Account platform used by hundreds of millions of devices worldwide.
@@ -323,16 +333,19 @@
           <div class="featured-badge">Featured</div>
           <div class="pub-venue">IJCAI 2026 — 35th Int'l Joint Conference on Artificial Intelligence</div>
           <div class="pub-title">
-            <a href="https://arxiv.org/pdf/2603.15481" target="_blank">TabKD: Tabular Knowledge Distillation through Interaction Diversity of Learned Feature Bins</a>
+            <a href="https://www.ijcai.org/proceedings/2026/526" target="_blank">TabKD: Tabular Knowledge Distillation through Interaction Diversity of Learned Feature Bins</a>
           </div>
           <div class="pub-authors"><strong>Shovon Niverd Pereira</strong>, Krishna Khadka, Yu Lei</div>
+          <div class="pub-alt-link"><a href="https://arxiv.org/pdf/2603.15481" target="_blank">arXiv version</a></div>
         </div>
       </div>
+
+      <div class="pub-sublabel">Earlier Publications</div>
 
       <div class="pub-item">
         <div class="pub-year">2021</div>
         <div class="pub-body">
-          <div class="pub-venue">IJCACI 2021 · Springer</div>
+          <div class="pub-venue">International Joint Conference on Advances in Computational Intelligence (IJCACI 2021) · Springer</div>
           <div class="pub-title">
             <a href="https://link.springer.com/chapter/10.1007/978-981-16-0586-4_35" target="_blank">Blockchain-based Digital Record-Keeping in Land Administration System</a>
           </div>
@@ -343,7 +356,7 @@
       <div class="pub-item">
         <div class="pub-year">2018</div>
         <div class="pub-body">
-          <div class="pub-venue">IEEE WIE Conference on Electrical and Computer Engineering</div>
+          <div class="pub-venue">IEEE International WIE Conference on Electrical and Computer Engineering</div>
           <div class="pub-title">
             <a href="https://ieeexplore.ieee.org/abstract/document/8783017" target="_blank">Multi-channel Approach Towards Digitizing the Land Management System of Bangladesh</a>
           </div>
