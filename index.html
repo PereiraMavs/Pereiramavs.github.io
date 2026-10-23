@@ -190,7 +190,7 @@
       min-width: 36px; padding-top: 0.25rem;
       flex-shrink: 0;
     }
-    .pub-body { flex: 1; }
+    .pub-body { flex: 1; min-width: 0; }
     .pub-venue {
       font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 0.3rem;
@@ -216,7 +216,27 @@
       color: var(--muted); text-decoration: underline;
       text-underline-offset: 3px; text-decoration-color: var(--border);
     }
-    .pub-alt-link a:hover { color: var(--text); }
+    .pub-alt-link a:hover, .pub-alt-link button:hover { color: var(--text); }
+    .pub-alt-link button {
+      font: inherit; color: var(--muted); background: none; border: none; padding: 0;
+      cursor: pointer; text-decoration: underline;
+      text-underline-offset: 3px; text-decoration-color: var(--border);
+    }
+    .pub-alt-link .sep { color: var(--muted); margin: 0 0.5rem; }
+    .bibtex-box { margin-top: 0.7rem; }
+    .bibtex-box[hidden] { display: none; }
+    .bibtex-box pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.72rem; line-height: 1.6; color: var(--text);
+      background: var(--surface); border: 1px solid var(--border); border-radius: 0.6rem;
+      padding: 0.8rem 0.9rem; overflow-x: auto; white-space: pre;
+    }
+    .bibtex-copy {
+      margin-top: 0.5rem; font-family: inherit; font-size: 0.75rem; color: var(--text);
+      background: var(--bg); border: 1px solid var(--border); border-radius: 999px;
+      padding: 0.25rem 0.8rem; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .bibtex-copy:hover { border-color: var(--accent); color: var(--accent); }
     .featured-badge {
       display: inline-flex; align-items: center;
       font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em;
@@ -304,6 +324,13 @@
       padding: 2rem 0; text-align: center;
     }
     footer p { font-size: 0.75rem; color: var(--muted); }
+    .footer-links { display: flex; justify-content: center; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+    .footer-links a {
+      font-size: 0.78rem; color: var(--muted); text-decoration: none;
+      border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); border-bottom-color: var(--text); }
+    .footer-updated { margin-top: 0.2rem; }
 
     @media (max-width: 640px) {
       nav { padding: 1rem 1.5rem; }
@@ -418,7 +445,26 @@
             <a href="https://www.ijcai.org/proceedings/2026/526" target="_blank">TabKD: Tabular Knowledge Distillation through Interaction Diversity of Learned Feature Bins</a>
           </div>
           <div class="pub-authors"><strong>Shovon Niverd Pereira</strong>, Krishna Khadka, Yu Lei</div>
-          <div class="pub-alt-link"><a href="https://arxiv.org/pdf/2603.15481" target="_blank">arXiv version</a></div>
+          <div class="pub-alt-link">
+            <a href="https://arxiv.org/pdf/2603.15481" target="_blank">arXiv version</a><span class="sep">·</span><button type="button" id="bibtex-toggle" aria-expanded="false" aria-controls="bibtex-box">BibTeX</button>
+          </div>
+          <div class="bibtex-box" id="bibtex-box" hidden>
+<pre id="bibtex-text">@inproceedings{ijcai2026p526,
+  title     = {TabKD: Tabular Knowledge Distillation Through Interaction Diversity of Learned Feature Bins},
+  author    = {Pereira, Shovon Niverd and Khadka, Krishna and Lei, Yu},
+  booktitle = {Proceedings of the Thirty-Fifth International Joint Conference on
+               Artificial Intelligence, {IJCAI-26}},
+  publisher = {International Joint Conferences on Artificial Intelligence Organization},
+  editor    = {Diego Calvanese},
+  pages     = {4723--4731},
+  year      = {2026},
+  month     = {8},
+  note      = {Main Track},
+  doi       = {10.24963/ijcai.2026/526},
+  url       = {https://doi.org/10.24963/ijcai.2026/526},
+}</pre>
+            <button type="button" class="bibtex-copy" id="bibtex-copy">Copy BibTeX</button>
+          </div>
         </div>
       </div>
 
@@ -671,7 +717,13 @@
 
 <footer>
   <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/PereiraMavs" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/shovon-niverd-pereira/" target="_blank">LinkedIn</a>
+      <a href="mailto:niverdpereira@gmail.com">Email</a>
+    </div>
     <p>© 2026 Shovon Niverd Pereira</p>
+    <p class="footer-updated">Last updated October 2026</p>
   </div>
 </footer>
 
@@ -682,6 +734,42 @@
   }
 
   setCitationCount();
+
+  (function () {
+    const toggle = document.getElementById("bibtex-toggle");
+    const box = document.getElementById("bibtex-box");
+    const copy = document.getElementById("bibtex-copy");
+    const text = document.getElementById("bibtex-text");
+    if (!toggle || !box || !copy || !text) return;
+
+    toggle.addEventListener("click", function () {
+      const open = box.hasAttribute("hidden");
+      if (open) box.removeAttribute("hidden"); else box.setAttribute("hidden", "");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+
+    copy.addEventListener("click", function () {
+      const done = function (ok) {
+        copy.textContent = ok ? "Copied!" : "Press Ctrl/Cmd+C to copy";
+        setTimeout(function () { copy.textContent = "Copy BibTeX"; }, 2000);
+      };
+      const fallback = function () {
+        const range = document.createRange();
+        range.selectNodeContents(text);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        let ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) {}
+        done(ok);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text.textContent).then(function () { done(true); }, fallback);
+      } else {
+        fallback();
+      }
+    });
+  })();
 </script>
 </body>
 </html>
