@@ -102,17 +102,6 @@
     .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 4rem; align-items: center; }
     .hero-text { order: 1; }
     .hero-photo { order: 2; }
-    .hero-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.3rem; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 0.82rem; font-weight: 500; text-decoration: none;
-      padding: 0.5rem 1.15rem; border-radius: 999px;
-      color: var(--accent); background: transparent;
-      border: 1px solid rgba(61, 111, 106, 0.3);
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .btn:hover { background: rgba(61, 111, 106, 0.08); border-color: rgba(61, 111, 106, 0.6); }
-    .btn-primary { background: rgba(61, 111, 106, 0.07); }
     .hero-eyebrow {
       font-size: 0.78rem; letter-spacing: 0.08em;
       color: var(--accent); font-weight: 500; text-transform: uppercase;
@@ -150,11 +139,8 @@
       border-radius: 50%;
       overflow: hidden;
       background: linear-gradient(180deg, #f5f3ee 0%, #ece9e2 100%);
-      border: 1px solid var(--border);
-      box-shadow: 0 12px 28px rgba(26, 26, 24, 0.10), 0 2px 8px rgba(26, 26, 24, 0.04);
+      box-shadow: 0 16px 36px rgba(26, 26, 24, 0.14), 0 3px 10px rgba(26, 26, 24, 0.06);
       margin: 0;
-      outline: 3px solid rgba(61, 111, 106, 0.18);
-      outline-offset: 6px;
     }
     .hero-photo img {
       display: block;
@@ -423,11 +409,9 @@
     <p class="contact-text" style="margin-top: 0; margin-bottom: 1.5rem; max-width: 560px;">
       Seeking research scientist roles and open to research collaborations. Feel free to reach out.
     </p>
-    <div class="hero-buttons">
-      <a href="Shovon_Niverd_Pereira_CV.pdf" download class="btn btn-primary" data-track-download="cv-hero">Download CV</a>
-      <a href="mailto:niverdpereira@gmail.com" class="btn btn-outline">Email</a>
-    </div>
     <div class="hero-links">
+      <a href="mailto:niverdpereira@gmail.com" class="hero-link">Email</a>
+      <a href="Shovon_Niverd_Pereira_CV.pdf" download class="hero-link" data-track-download="cv-hero">Download CV</a>
       <a href="https://www.linkedin.com/in/shovon-niverd-pereira/" target="_blank" class="hero-link">LinkedIn</a>
       <a href="https://github.com/PereiraMavs" target="_blank" class="hero-link">GitHub</a>
       <a href="https://arxiv.org/pdf/2603.15481" target="_blank" class="hero-link">TabKD Paper</a>
