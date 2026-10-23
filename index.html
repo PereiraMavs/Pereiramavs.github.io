@@ -105,14 +105,14 @@
     .hero-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.3rem; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; font-weight: 500; text-decoration: none;
-      padding: 0.6rem 1.3rem; border-radius: 999px; border: 1px solid var(--accent);
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      font-size: 0.82rem; font-weight: 500; text-decoration: none;
+      padding: 0.5rem 1.15rem; border-radius: 999px;
+      color: var(--accent); background: transparent;
+      border: 1px solid rgba(61, 111, 106, 0.3);
+      transition: background 0.2s, border-color 0.2s;
     }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: #2f5853; box-shadow: 0 6px 16px rgba(61, 111, 106, 0.25); }
-    .btn-outline { background: transparent; color: var(--accent); }
-    .btn-outline:hover { background: rgba(61, 111, 106, 0.08); }
+    .btn:hover { background: rgba(61, 111, 106, 0.08); border-color: rgba(61, 111, 106, 0.6); }
+    .btn-primary { background: rgba(61, 111, 106, 0.07); }
     .hero-eyebrow {
       font-size: 0.78rem; letter-spacing: 0.08em;
       color: var(--accent); font-weight: 500; text-transform: uppercase;
