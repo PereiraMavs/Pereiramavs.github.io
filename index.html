@@ -324,6 +324,13 @@
       padding: 2rem 0; text-align: center;
     }
     footer p { font-size: 0.75rem; color: var(--muted); }
+    .footer-links { display: flex; justify-content: center; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+    .footer-links a {
+      font-size: 0.78rem; color: var(--muted); text-decoration: none;
+      border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); border-bottom-color: var(--text); }
+    .footer-updated { margin-top: 0.2rem; }
 
     @media (max-width: 640px) {
       nav { padding: 1rem 1.5rem; }
@@ -710,7 +717,13 @@
 
 <footer>
   <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/PereiraMavs" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/shovon-niverd-pereira/" target="_blank">LinkedIn</a>
+      <a href="mailto:niverdpereira@gmail.com">Email</a>
+    </div>
     <p>© 2026 Shovon Niverd Pereira</p>
+    <p class="footer-updated">Last updated October 2026</p>
   </div>
 </footer>
 
